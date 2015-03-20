@@ -1,83 +1,100 @@
 package com.hosptialsystem.group7.Users;
 
+import java.time.LocalDate;
+import java.util.Date;
+
 public abstract class User {
 
 	/**
-	 * private String username - The username will also be the email that the
+	 * private field username - The username will also be the email that the
 	 * user will recieve email notifications
 	 */
 	private String username;
 	/**
-	 * private string password - The password for the user
+	 * private field password - The password for the user
 	 */
 	// TODO The password need to be hashed.
 	private String password;
 	/**
-	 * private string firstname - The first name of the user
+	 * private field firstname - The first name of the user
 	 */
 	private String firstName;
 	/**
-	 * private string middleName - The middle name of the user
+	 * private field middleName - The middle name of the user
 	 */
 	private String middleName;
 	/**
-	 * private string lastName - The last name of the user
+	 * private field lastName - The last name of the user
 	 */
 	private String lastName;
 	/**
-	 * private Date dateOfBirth - The date of birth of the user
+	 * private field dateOfBirth - The date of birth of the user
 	 */
-	private Date dateOfBirth;
+	private LocalDate dateOfBirth;
 	/**
-	 * private string maritalStatus - The marital status of the user
+	 * private field age - The calculated age of the user.
+	 */
+	private int age;
+	/**
+	 * private field maritalStatus - The marital status of the user
 	 */
 	private String maritialStatus;
 	/**
-	 * private MailingAddress userAddress - The address for the user
+	 * private field userAddress - The address for the user
 	 */
 	private MailingAddress userAddress = new MailingAddress();
 	/**
-	 * private int primaryPhone - the primary phone number for the user
+	 * private field primaryPhone - the primary phone number for the user
 	 */
 	private int primaryPhone;
 	/**
-	 * private int secondaryPhone - the secondary phone number for the user
+	 * private field secondaryPhone - the secondary phone number for the user
 	 */
 	private int secondaryPhone;
 	/**
-	 * private String primaryEmail - The primary email address for the user. The
+	 * private field primaryEmail - The primary email address for the user. The
 	 * default will be the username.
 	 */
 	private String primaryEmail;
 	/**
-	 * private String secondaryEmail - The secondary email address for the user.
+	 * private field secondaryEmail - The secondary email address for the user.
 	 */
 	private String secondaryEmail;
 	/**
-	 * private String ecFirstName - The first name of the emergency contact
+	 * private field ecFirstName - The first name of the emergency contact
 	 */
 	private String ecFirstName;
 	/**
-	 * private String ecLastname - The last name of the emergenecy contact.
+	 * private field ecLastname - The last name of the emergenecy contact.
 	 */
 	private String ecLastName;
 	/**
-	 * private int ecPhoneNumber - The phone number of the emergenry contact.
+	 * private field ecPhoneNumber - The phone number of the emergenry contact.
 	 */
-	private int ecPhoneNuber;
+	private int ecPhoneNumber;
 	/**
-	 * private String ecEmailAddress - The email address of the Emergency contact.
+	 * private field ecEmailAddress - The email address of the Emergency
+	 * contact.
 	 */
 	private String ecEmailAddress;
-	
+
 	/**
-	 * public constructor - will create a new instance of the class User and store the username, primary email and the password.
+	 * public constructor - will create a new instance of the class User and
+	 * store the username, primary email and the password.
 	 */
-	public User(String applicantEmail, String applicantPassword){
-		
+	public User(String applicantEmail, String applicantPassword) {
+		// set the username. This should be the only time that the username is
+		// ever set.
+		setUsername(applicantEmail);
+		// set the Primary Email for the user
+		setPrimaryEmail(applicantEmail);
+		// Set the password for the user
+		setPassword(applicantPassword);
 	}
 
 	/**
+	 * public method getUserName - returns the Username of the user
+	 * 
 	 * @return the username
 	 */
 	public String getUsername() {
@@ -85,41 +102,62 @@ public abstract class User {
 	}
 
 	/**
-	 * @param username the username to set
+	 * private setUsername - sets the username of the user. It is set private
+	 * because the username will only be set once during the initial application
+	 * for the user role.
+	 * 
+	 * @param username
+	 *            the username to set
 	 */
-	public void setUsername(String username) {
+	private void setUsername(String username) {
 		this.username = username;
 	}
 
+	// TODO Implement the hashing to protect the Password.
 	/**
+	 * public method getPassword - gets and returns the password of the user
+	 * 
 	 * @return the password
 	 */
 	public String getPassword() {
 		return password;
 	}
 
+	// TODO Do we want to implement the Verification for the password here
+	// return a boolean?
 	/**
-	 * @param password the password to set
+	 * Public method setPassword - Set the user password to log onto the tool.
+	 * 
+	 * @param password
+	 *            the password to set
 	 */
 	public void setPassword(String password) {
 		this.password = password;
 	}
 
 	/**
-	 * @return the firstName
+	 * public method getFirstName - returns the first name of the user
+	 * 
+	 * @return the firstName of the user
 	 */
 	public String getFirstName() {
 		return firstName;
 	}
 
 	/**
-	 * @param firstName the firstName to set
+	 * public method setFirstName - sets the first name of the user. Will be
+	 * used when the user enters their personal information and demographics
+	 * 
+	 * @param firstName
+	 *            the firstName to set
 	 */
 	public void setFirstName(String firstName) {
 		this.firstName = firstName;
 	}
 
 	/**
+	 * public method getMiddleName - returns the middle name of the user.
+	 * 
 	 * @return the middleName
 	 */
 	public String getMiddleName() {
@@ -127,13 +165,19 @@ public abstract class User {
 	}
 
 	/**
-	 * @param middleName the middleName to set
+	 * public method setMiddleName - Sets the middle name of the user. Will be
+	 * used when the user enters their personal information and demographics.
+	 * 
+	 * @param middleName
+	 *            the middleName to set
 	 */
 	public void setMiddleName(String middleName) {
 		this.middleName = middleName;
 	}
 
 	/**
+	 * public method getLastName - returns the last name of the user.
+	 * 
 	 * @return the lastName
 	 */
 	public String getLastName() {
@@ -141,27 +185,40 @@ public abstract class User {
 	}
 
 	/**
-	 * @param lastName the lastName to set
+	 * public method setLastName - Sets the last name of the user. Will be used
+	 * when the user enters their personal information and demographics.
+	 * 
+	 * @param lastName
+	 *            the lastName to set
 	 */
 	public void setLastName(String lastName) {
 		this.lastName = lastName;
 	}
 
 	/**
+	 * public method getDateOfBirth - returns the date of birth of the user.
+	 * 
 	 * @return the dateOfBirth
 	 */
-	public Date getDateOfBirth() {
+	public LocalDate getDateOfBirth() {
 		return dateOfBirth;
 	}
 
 	/**
-	 * @param dateOfBirth the dateOfBirth to set
+	 * public method setDateofBirth - Sets the Date of Birth of the user. Will
+	 * be used when the user enters their personal information and demographics.
+	 * 
+	 * @param dateOfBirth
+	 *            the dateOfBirth to set
 	 */
-	public void setDateOfBirth(Date dateOfBirth) {
-		this.dateOfBirth = dateOfBirth;
+	public void setDateOfBirth(int year, int month, int day) {
+		this.dateOfBirth = LocalDate.of(year, month, day);
+		setAge(calculateAge(this.dateOfBirth));
 	}
 
 	/**
+	 * public method getMaritalStatus - returns the martial status of the user
+	 * 
 	 * @return the maritialStatus
 	 */
 	public String getMaritialStatus() {
@@ -169,27 +226,43 @@ public abstract class User {
 	}
 
 	/**
-	 * @param maritialStatus the maritialStatus to set
+	 * public method setMaritialStatus - Sets the martial status of the user.
+	 * will be used when the user enters their personal information and
+	 * demographics.
+	 * 
+	 * @param maritialStatus
+	 *            the maritialStatus to set
 	 */
 	public void setMaritialStatus(String maritialStatus) {
 		this.maritialStatus = maritialStatus;
 	}
 
+	// TODO figure out how the userAddress needs to be displayed and represented
 	/**
+	 * public method getUserAddress - will return the address of the user
+	 * 
 	 * @return the userAddress
 	 */
 	public MailingAddress getUserAddress() {
 		return userAddress;
 	}
 
+	// TODO need to decide to how to handle the user address
 	/**
-	 * @param userAddress the userAddress to set
+	 * public method setUserAddress - sets the user address. Will be used when
+	 * the user enters their personal information and demographics.
+	 * 
+	 * @param userAddress
+	 *            the userAddress to set
 	 */
 	public void setUserAddress(MailingAddress userAddress) {
 		this.userAddress = userAddress;
 	}
 
 	/**
+	 * public method getPrimaryPhone - will return the primary phone number for
+	 * the user.
+	 * 
 	 * @return the primaryPhone
 	 */
 	public int getPrimaryPhone() {
@@ -197,13 +270,21 @@ public abstract class User {
 	}
 
 	/**
-	 * @param primaryPhone the primaryPhone to set
+	 * public method setPrimaryPhone - Sets the primary phone number of the
+	 * user. Will be used when the user enters their personal information and
+	 * demographics.
+	 * 
+	 * @param primaryPhone
+	 *            the primaryPhone to set
 	 */
 	public void setPrimaryPhone(int primaryPhone) {
 		this.primaryPhone = primaryPhone;
 	}
 
 	/**
+	 * public method getSecondaryPhone - Will return the secondary phone number
+	 * for the user.
+	 * 
 	 * @return the secondaryPhone
 	 */
 	public int getSecondaryPhone() {
@@ -211,13 +292,22 @@ public abstract class User {
 	}
 
 	/**
-	 * @param secondaryPhone the secondaryPhone to set
+	 * public method setSecondryPhone - Sets the secondary phone number of the
+	 * user. Will be used when the user enters their personal information and
+	 * demographics.
+	 * 
+	 * @param secondaryPhone
+	 *            the secondaryPhone to set
 	 */
 	public void setSecondaryPhone(int secondaryPhone) {
 		this.secondaryPhone = secondaryPhone;
 	}
 
 	/**
+	 * public method getPrimaryEmail - Will return the primary email address of
+	 * the user. The primary email address will be the email that the user will
+	 * receive email notifications.
+	 * 
 	 * @return the primaryEmail
 	 */
 	public String getPrimaryEmail() {
@@ -225,13 +315,21 @@ public abstract class User {
 	}
 
 	/**
-	 * @param primaryEmail the primaryEmail to set
+	 * public method setPrimaryEmail - Sets the primary email address of the
+	 * user. Will be used when the user enters their personal information and
+	 * demographics.
+	 * 
+	 * @param primaryEmail
+	 *            the primaryEmail to set
 	 */
 	public void setPrimaryEmail(String primaryEmail) {
 		this.primaryEmail = primaryEmail;
 	}
 
 	/**
+	 * public method getSecondayEmail - Will return the secondary email address
+	 * of the user.
+	 * 
 	 * @return the secondaryEmail
 	 */
 	public String getSecondaryEmail() {
@@ -239,27 +337,43 @@ public abstract class User {
 	}
 
 	/**
-	 * @param secondaryEmail the secondaryEmail to set
+	 * public method setSecondaryEmail - Sets the secondary email address of the
+	 * user. Will be used when the user enters their personal information and
+	 * demographics.
+	 * 
+	 * @param secondaryEmail
+	 *            the secondaryEmail to set
 	 */
 	public void setSecondaryEmail(String secondaryEmail) {
 		this.secondaryEmail = secondaryEmail;
 	}
 
 	/**
-	 * @return the ecFirstName
+	 * public method getEcirstName - will return the first name of the emergency
+	 * contact.
+	 * 
+	 * @return the Emergency contact FirstName
 	 */
 	public String getEcFirstName() {
 		return ecFirstName;
 	}
 
 	/**
-	 * @param ecFirstName the ecFirstName to set
+	 * public method setEcFirstName - sets the first name of the emergency
+	 * contact. Will be used when the user enters their personal information and
+	 * demographics.
+	 * 
+	 * @param ecFirstName
+	 *            the ecFirstName to set
 	 */
 	public void setEcFirstName(String ecFirstName) {
 		this.ecFirstName = ecFirstName;
 	}
 
 	/**
+	 * public method getEcLastName - Will return the last name of the emergency
+	 * contact.
+	 * 
 	 * @return the ecLastName
 	 */
 	public String getEcLastName() {
@@ -267,27 +381,43 @@ public abstract class User {
 	}
 
 	/**
-	 * @param ecLastName the ecLastName to set
+	 * public method setEcLastName - Sets the last name of the emergency
+	 * contact. Will be used when the user enters their personal information and
+	 * demographics.
+	 * 
+	 * @param ecLastName
+	 *            the ecLastName to set
 	 */
 	public void setEcLastName(String ecLastName) {
 		this.ecLastName = ecLastName;
 	}
 
 	/**
+	 * public method getEcPhoneNumber - Will return the phone number of the
+	 * emergency contact.
+	 * 
 	 * @return the ecPhoneNuber
 	 */
 	public int getEcPhoneNuber() {
-		return ecPhoneNuber;
+		return ecPhoneNumber;
 	}
 
 	/**
-	 * @param ecPhoneNuber the ecPhoneNuber to set
+	 * public method setEcPhoneNumber - Sets the phone number of the emergency
+	 * contact. Will be used when the user enters their personal information and
+	 * demographics.
+	 * 
+	 * @param ecPhoneNuber
+	 *            the ecPhoneNuber to set
 	 */
 	public void setEcPhoneNuber(int ecPhoneNuber) {
-		this.ecPhoneNuber = ecPhoneNuber;
+		this.ecPhoneNumber = ecPhoneNuber;
 	}
 
 	/**
+	 * public method getEcEmailAddress - Will return the email address of the
+	 * emergency contact.
+	 * 
 	 * @return the ecEmailAddress
 	 */
 	public String getEcEmailAddress() {
@@ -295,10 +425,39 @@ public abstract class User {
 	}
 
 	/**
-	 * @param ecEmailAddress the ecEmailAddress to set
+	 * public method setEcEmailAddress - sets the email address of the emergency
+	 * contact. Will be used when the user enters their personal information and
+	 * demographics.
+	 * 
+	 * @param ecEmailAddress
+	 *            the ecEmailAddress to set
 	 */
 	public void setEcEmailAddress(String ecEmailAddress) {
 		this.ecEmailAddress = ecEmailAddress;
 	}
-}
+	
+	/**
+	 * public method setAge - sets the age of the user
+	 * @param age of the user
+	 */
+	public void setAge(int age){
+		this.age= age;
+	}
+	/**
+	 * private method calculateAge - calculates age of the user
+	 * @param dob
+	 * @return The calculated age 
+	 */
+	private int calculateAge(LocalDate dob) {
+		LocalDate currentDate = LocalDate.now();
+		int calcAge = currentDate.getYear() - dob.getYear();
+		if (currentDate.getMonthValue() < dob.getMonthValue())
+			calcAge--;
+		else if ((currentDate.getMonth() == dob.getMonth())
+				&& (currentDate.getDayOfMonth() < dob.getDayOfMonth()))
+			calcAge--;
 
+		return calcAge;
+	}
+
+}
