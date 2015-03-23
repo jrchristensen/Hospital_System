@@ -78,6 +78,7 @@ public abstract class User {
 	 */
 	private String ecEmailAddress;
 
+
 	/**
 	 * public constructor - will create a new instance of the class User and
 	 * store the username, primary email and the password.

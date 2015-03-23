@@ -23,15 +23,32 @@ public class Administrator extends User {
 	 */
 	public String department;
 	//TODO Implement shift/Availability and Holidays
-	
 	/**
-	 * public constructor Administrator - will store the following parameters:
-	 * @param applicantEmail
-	 * @param applicantPassword
+	 * public constructor - minimal constructor
+	 * @param applicantEmail - applicants email address
+	 * @param applicantPassword - applicants proposed email address
 	 */
-	public Administrator(String applicantEmail, String applicantPassword) {
+	public Administrator(String applicantEmail, String applicantPassword){
 		super(applicantEmail, applicantPassword);
-		// TODO Auto-generated constructor stub
+		
+	}
+	/**
+	 * public constructor - complete constructor
+	 * @param applicantEmail - applicants email
+	 * @param applicantPassword - applicants proposed password
+	 * @param jobTitle - the job title of the administrator
+	 * @param degree - the degree of the administrator
+	 * @param certifications - the certifications of the administrator.
+	 * @param specailizations - the specializations of the administrator.
+	 * @param department - the department of the administrator. 
+	 */
+	public Administrator(String applicantEmail, String applicantPassword, String jobTitle, String degree, String certifications, String specailizations, String department) {
+		super(applicantEmail, applicantPassword);
+		setJobTitle(jobTitle);
+		setDegree(degree);
+		setCertifications(certifications);
+		setSpecailizations(specailizations);
+		setDepartment(department);
 	}
 
 	/**
