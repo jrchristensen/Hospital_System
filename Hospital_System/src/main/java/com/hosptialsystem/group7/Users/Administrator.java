@@ -1,5 +1,12 @@
 package com.hosptialsystem.group7.Users;
 
+/**
+ * public class Administrator - will hold and handle the Administrator specific
+ * information
+ * 
+ * @author Jacob Christensen
+ *
+ */
 public class Administrator extends User {
 
 	/**

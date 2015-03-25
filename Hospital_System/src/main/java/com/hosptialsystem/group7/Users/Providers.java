@@ -1,7 +1,8 @@
 package com.hosptialsystem.group7.Users;
 
 /**
- * @author Jacob
+ * public class Providers - stores and handles the provider specific information
+ * @author Jacob Christensen
  *
  */
 public class Providers extends User {
@@ -172,6 +173,7 @@ public class Providers extends User {
 
 	/**
 	 * public method getExperience - will return the experience of the provider
+	 * 
 	 * @return the experience
 	 */
 	public String getExperience() {
@@ -180,6 +182,7 @@ public class Providers extends User {
 
 	/**
 	 * public method setExperience - will set the experience of the provider
+	 * 
 	 * @param experience
 	 *            the experience to set
 	 */
@@ -188,6 +191,8 @@ public class Providers extends User {
 	}
 
 	/**
+	 * public method getDepartment - will return the department of the provider
+	 * 
 	 * @return the department
 	 */
 	public String getDepartment() {
@@ -195,6 +200,8 @@ public class Providers extends User {
 	}
 
 	/**
+	 * public method setDepartment - will set the department of the provider
+	 * 
 	 * @param department
 	 *            the department to set
 	 */
@@ -203,6 +210,9 @@ public class Providers extends User {
 	}
 
 	/**
+	 * public method getAffiliation - will return the affiliation of the
+	 * provider
+	 * 
 	 * @return the affiliation
 	 */
 	public String getAffiliation() {
@@ -210,6 +220,8 @@ public class Providers extends User {
 	}
 
 	/**
+	 * public method setAffilifation - will set the affiliation of the provider
+	 * 
 	 * @param affiliation
 	 *            the affiliation to set
 	 */
